@@ -22,7 +22,7 @@ def Scraper3D():
         with open("Modelos_3D.csv", mode="w", newline='') as archivo: 
             escritura = csv.writer(archivo)
             escritura.writerow(Datos)
-        while i<200:
+        while i<3:
             WebDriverWait(driver, t).until(EC.visibility_of_all_elements_located((By.CLASS_NAME, 'labels-single')))
             modelos = driver.find_elements(By.CLASS_NAME, 'itemtitle')
             with open("Modelos_3D.csv", mode="a", newline='') as archivo: 
@@ -30,8 +30,9 @@ def Scraper3D():
                 for modelo in modelos:
                     ID_modelo = modelo.find_element(By.TAG_NAME, 'a').text.strip()
                     escritura.writerow([ID_modelo])
+                    driver.back()
 
-            pag_siguiente =WebDriverWait(driver, t).until(EC.element_to_be_clickable((By.XPATH, '//a[@class="nextpostslink"]')))
+            pag_siguiente =driver.find_element(By.XPATH, '//a[@class="nextpostslink"]')
             pag_siguiente.click()  
             WebDriverWait(driver, t).until(EC.visibility_of_all_elements_located((By.CLASS_NAME, 'labels-single')))
             i+=1
