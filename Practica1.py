@@ -22,7 +22,7 @@ def Scraper3D():
         with open("Modelos_3D.csv", mode="w", newline='') as archivo: 
             escritura = csv.writer(archivo)
             escritura.writerow(Datos)
-        while i<200:
+        while i<3:
             WebDriverWait(driver, t).until(EC.visibility_of_all_elements_located((By.CLASS_NAME, 'labels-single')))
             modelos = driver.find_elements(By.CLASS_NAME, 'itemtitle')
             with open("Modelos_3D.csv", mode="a", newline='') as archivo: 
