@@ -199,7 +199,7 @@ initial_url='https://open3dmodel.com/3d-models/' #page1
 headers=updateUserAgent()
 page=Page(headers)
 i,m=0,0
-max_pags=90
+max_pags=100
 with open("data/Modelos_3D.csv", mode="w", newline='',encoding='utf-8') as archivo: 
     escritura = csv.writer(archivo)
     escritura.writerow(Datos)
